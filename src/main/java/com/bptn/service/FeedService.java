@@ -56,12 +56,16 @@ public class FeedService {
 		return post;
 	}
 
-	public List<Post> getPostsByPostType(String postType){
+	public List<Post> getPostsByPostType(String postType) throws InvalidPostException{
 		
 		logger.info("retrieving Posts from database by postType");
 		
 		List<Post> posts = feedRepository.findByPostType(postType);
 		posts = removeEmptyPosts(posts);
+		
+		if (posts == null) {
+			throw new InvalidPostException("PostType does not exist");
+		}
 				
 		logger.debug("Feed={}", posts);
 		
