@@ -16,14 +16,18 @@ public class Post {
 	@Column(name="\"post\"")
 	private String post;
 	@Column(name="\"usernameKey\"")
-	private String usernameKey;
+	private String username;
 	
-	public Post(String postID, String postType, String post, String usernameKey) {
+	public Post() {
+		super();
+	}
+
+	public Post(String postID, String postType, String post, String username) {
 		super();
 		this.postID = postID;
 		this.postType = postType;
 		this.post = post;
-		this.usernameKey = usernameKey;
+		this.username = username;
 	}
 
 	public String getPostID() {
@@ -50,17 +54,17 @@ public class Post {
 		this.post = post;
 	}
 
-	public String getUsernameKey() {
-		return usernameKey;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUsernameKey(String usernameKey) {
-		this.usernameKey = usernameKey;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 	
 	
-	
-	
-
 }
+
+
+
