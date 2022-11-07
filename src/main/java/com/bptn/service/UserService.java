@@ -19,7 +19,7 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
-	public void validateUserID(String username) throws InvalidUserNameException{
+	public void validateUserId(String username) throws InvalidUserNameException{
 		
 		List<UserID> userIDlist = userRepository.findbyUsername(username);
 		

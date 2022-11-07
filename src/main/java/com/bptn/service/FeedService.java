@@ -15,7 +15,6 @@ import com.bptn.exceptions.InvalidPostException;
 import com.bptn.exceptions.InvalidUserNameException;
 import com.bptn.models.Post;
 import com.bptn.repository.FeedRepository;
-import com.bptn.service.UserService;
 
 @Service
 public class FeedService {
@@ -32,7 +31,7 @@ public class FeedService {
 	
 		logger.info("retrieving Posts from Database by Username");
 	
-		userService.validateUserID(username);
+		userService.validateUserId(username);
 		List<Post> posts = feedRepository.findByUsername(username);
 		posts = removeEmptyPosts(posts);
 	
