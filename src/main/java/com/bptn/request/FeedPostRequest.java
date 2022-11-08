@@ -5,7 +5,7 @@ public class FeedPostRequest {
 	
 	private String fromDate;
 	private String toDate;
-	private String querykeyword;
+	private String queryKeyword;
 	private String userName;
 	
 	
@@ -21,11 +21,11 @@ public class FeedPostRequest {
 	public void setToDate(String toDate) {
 		this.toDate = toDate;
 	}
-	public String getQuerykeyword() {
-		return querykeyword;
+	public String getQueryKeyword() {
+		return queryKeyword;
 	}
-	public void setQuerykeyword(String querykeyword) {
-		this.querykeyword = querykeyword;
+	public void setQueryKeyword(String queryKeyword) {
+		this.queryKeyword = queryKeyword;
 	}
 	public String getUserName() {
 		return userName;
@@ -33,6 +33,9 @@ public class FeedPostRequest {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	
+	
+	
 	
 	
 	
