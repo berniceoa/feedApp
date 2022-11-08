@@ -24,10 +24,10 @@ public class FeedPostService {
 	//adding a logging functionality to this class 
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 	
-	@Value("{$api.key}")
+	@Value("${api.key}")
 	private String apiKey;
 	
-	@Value("{$api.base.url}")
+	@Value("${api.base.url}")
 	private String apiBaseUrl;
 	
 	@Autowired
@@ -89,8 +89,8 @@ public class FeedPostService {
 		String result = restTemplate.getForObject(url, String.class);
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		JsonElement jsonElement = JsonParser.parseString(result);
-		String postDescription = gson.toJson(jsonElement.getAsJsonObject().get("articles").
-				getAsJsonArray().getAsJsonObject().get("decsription"));
+		String postDescription =gson.toJson(jsonElement.getAsJsonObject()
+				.get("articles").getAsJsonArray().get(0).getAsJsonObject().get("description"));
 		
 		
 		return postDescription;
