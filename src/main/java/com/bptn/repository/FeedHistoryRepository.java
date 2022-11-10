@@ -10,11 +10,11 @@ import com.bptn.models.History;
 @Repository
 public interface FeedHistoryRepository extends JpaRepository<History, String> {
 	
-	List<History> findByUserName(String username);
+	List<History> findByUsername(String username);
 	
 	History findByPostId(String postID);
 	
-	History findByPostType(String postType);
+	List <History> findByPostType(String postType);
 	
 	void deleteByPostType(String postType);
 
