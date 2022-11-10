@@ -38,4 +38,38 @@ public class FeedMediaController {
 	
 	return new ResponseEntity<>(imageMetaDataList, HttpStatus.OK);
 }
+
+	
+	@GetMapping(value = "/imageInfo/metadata/{imageID}")
+	public ResponseEntity<Object> getPostsImageMediaByImageId(@PathVariable("imageID") String imageID){
+		LOGGER.debug("Executing getImageMediaByImageId API");
+		
+		ImageMetaData imageMetaData;
+		
+		try {
+			imageMetaData = feedMediaService.getPostsImageMediaByImageId(imageID);
+		} catch (InvalidImageMetaDataException e){
+			LOGGER.error("Unable to find image metabata by imageId, cause={}", e.getMessage());
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+		
+		return new ResponseEntity<>(imageMetaData, HttpStatus.OK);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
 }
