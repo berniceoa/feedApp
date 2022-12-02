@@ -1,112 +1,100 @@
 package com.bptn.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import java.io.Serializable;
+import javax.persistence.*;
 
 @Entity
-@Table(name="\"ImageMetaData\"")
-public class ImageMetaData {
-	
-	    @Id
-	    @Column(name = "\"imageID\"")
-	    private String imageid;
+@Table(name = "\"ImageMetaData\"")
+@NamedQuery(name="ImageMetaData.findAll", query="SELECT i FROM ImageMetaData i")
+public class ImageMetaData implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-	    @Column(name = "\"imageName\"")
-	    private String imagename;
 
-	    @Column(name = "\"imageSize\"")
-	    private String imagesize;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "\"imageID\"", nullable = false)
+	private Long id;
 
-	    @Column(name = "\"imageFormat\"")
-	    private String imageformat;
 
-	    @Column(name = "\"imageDate\"")
-	    private String imagedate;
+	@Column(name = "\"imageName\"", nullable = false)
+	private String imageName;
 
-	    @Column(name = "\"resolution\"")
-	    private String resolution;
 
-	    // Annotate for the foreign key
-	    @Column(name = "\"postKey\"")
-	    private String postkey;
+	@Column(name = "\"imageSize\"", nullable = false)
+	private String imageSize;
 
-		public ImageMetaData() {
-			super();
-		}
 
-		public ImageMetaData(String imageid, String imagename, String imagesize, String imageformat, String imagedate,
-				String resolution, String postkey) {
-			super();
-			this.imageid = imageid;
-			this.imagename = imagename;
-			this.imagesize = imagesize;
-			this.imageformat = imageformat;
-			this.imagedate = imagedate;
-			this.resolution = resolution;
-			this.postkey = postkey;
-		}
+	@Column(name = "\"imageFormat\"", nullable = false)
+	private String imageFormat;
 
-		public String getImageid() {
-			return imageid;
-		}
 
-		public void setImageid(String imageid) {
-			this.imageid = imageid;
-		}
+	@Column(name = "\"imageDate\"", nullable = false)
+	private String imageDate;
 
-		public String getImagename() {
-			return imagename;
-		}
 
-		public void setImagename(String imagename) {
-			this.imagename = imagename;
-		}
+	@Column(name = "resolution", nullable = false)
+	private String resolution;
 
-		public String getImagesize() {
-			return imagesize;
-		}
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "\"postKey\"", nullable = false)
+	@JsonBackReference
+	private Post postKey;
 
-		public void setImagesize(String imagesize) {
-			this.imagesize = imagesize;
-		}
+	public Post getPostKey() {
+		return postKey;
+	}
 
-		public String getImageformat() {
-			return imageformat;
-		}
+	public void setPostKey(Post postKey) {
+		this.postKey = postKey;
+	}
 
-		public void setImageformat(String imageformat) {
-			this.imageformat = imageformat;
-		}
+	public String getResolution() {
+		return resolution;
+	}
 
-		public String getImagedate() {
-			return imagedate;
-		}
+	public void setResolution(String resolution) {
+		this.resolution = resolution;
+	}
 
-		public void setImagedate(String imagedate) {
-			this.imagedate = imagedate;
-		}
+	public String getImageDate() {
+		return imageDate;
+	}
 
-		public String getResolution() {
-			return resolution;
-		}
+	public void setImageDate(String imageDate) {
+		this.imageDate = imageDate;
+	}
 
-		public void setResolution(String resolution) {
-			this.resolution = resolution;
-		}
+	public String getImageFormat() {
+		return imageFormat;
+	}
 
-		public String getPostkey() {
-			return postkey;
-		}
+	public void setImageFormat(String imageFormat) {
+		this.imageFormat = imageFormat;
+	}
 
-		public void setPostkey(String postkey) {
-			this.postkey = postkey;
-		}
-	    
-	    
-	
-	
-	
+	public String getImageSize() {
+		return imageSize;
+	}
 
+	public void setImageSize(String imageSize) {
+		this.imageSize = imageSize;
+	}
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 }

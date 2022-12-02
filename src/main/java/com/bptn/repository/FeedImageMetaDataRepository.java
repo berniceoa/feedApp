@@ -1,17 +1,14 @@
 package com.bptn.repository;
 
+import com.bptn.models.ImageMetaData;
+import com.bptn.models.Post;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+public interface FeedImageMetaDataRepository extends JpaRepository<ImageMetaData, String> {
 
-import com.bptn.models.ImageMetaData;
+	ImageMetaData findById(long imageId);
 
-@Repository
-public interface FeedImageMetaDataRepository extends JpaRepository<ImageMetaData, String>{
-	
-	ImageMetaData findByImageid(String imageID);
-	
-	List<ImageMetaData> findByPostkey(String postkey);
-
+	List<ImageMetaData> findAllByPostKey(Post post);
 }
