@@ -41,7 +41,7 @@ public class FeedPostController {
 			validateRequest(feedPostRequest);
 			userService.validateUserId(feedPostRequest.getUserName());
 			
-			Post feed = feedPostService.getPostFromNewsandSavePost(feedPostRequest);
+			Post feed = feedPostService.getPostFromNewsAndSavePost(feedPostRequest);
 			
 			return new ResponseEntity<>(feed, HttpStatus.OK);
 		}

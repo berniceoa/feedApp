@@ -157,5 +157,20 @@ public class PersonalDetailsService {
         addressToBeUpdated.setCountry(addressRequest.getCountry());
         addressToBeUpdated.setState(addressRequest.getState());
         return userRepository.save(userID);
+    }public Profile getProfile(String username) {
+        UserID userID = userRepository.findByUsername(username);
+        Profile profile = userID.getProfile();
+
+        return profile;
     }
+
+
+    public Set<Address> getAddress(String username) {
+        UserID userID = userRepository.findByUsername(username);
+        Set<Address> addresses = userID.getAddresses();
+
+        return addresses;
+    }
+
+
 }
